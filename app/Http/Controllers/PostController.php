@@ -15,6 +15,7 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+
     public function create()
     {
         return view('post.create');
@@ -26,6 +27,7 @@ class PostController extends Controller
         }
         */
     }
+
     public function store(Request $request)
     {
 
@@ -36,6 +38,10 @@ class PostController extends Controller
         $posts = new Posts;
         $posts->title = $request->title;
         $posts->body = $request->body;
-        $posts->save();
+        if ($posts->save()) {
+            return redirect('/');
+        } else {
+            return back()->withInput();
+        }
     }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.default')
-
+    {!! var_dump($errors); !!}
     {!! Form::open(['action' => 'PostController@store']) !!}
         <div class="form_group">
             {!! Form::label('title', 'Title:') !!}
